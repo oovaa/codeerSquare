@@ -1,31 +1,20 @@
 import express, { type RequestHandler } from 'express'
-
+import { db } from './datastore'
 const app = express()
 app.use(express.json())
 
-const posts: string[] = []
-
-const timer: RequestHandler = (req, res, next) => {
-  console.log(Date.now());
+const requestLoggerMilddleware: RequestHandler = (req, res, next) => {
+  console.log(req.method, req.path, '- body', req.body);
   next()
 }
-const logger: RequestHandler = (req, res, next) => {
-  console.log("new request:", req.path, req.body);
-  next()
-}
-
-app.use(logger)
-app.use(timer)
-
 
 app.get('/posts', (req, res) => {
-  res.send({ posts })
+  res.send({ postss: db.listPost() })
 })
 
 app.post('/posts', (req, res) => {
-  // console.log("body: ", req.body)
   const newpost = req.body
-  posts.push(newpost)
+  db.createPost(newpost)
   res.sendStatus(201)
 })
 
