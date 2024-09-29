@@ -2,6 +2,6 @@ import type { Comment } from "../types";
 
 export interface CommentDao {
     createComment(comment: Comment): void,
-    listComment(postId: string): Comment[],
+    listComments(postId: string): Comment[],
     deleteComment(id: string): void,
 }

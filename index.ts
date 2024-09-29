@@ -8,6 +8,8 @@ const requestLoggerMilddleware: RequestHandler = (req, res, next) => {
   next()
 }
 
+app.use(requestLoggerMilddleware)
+
 app.get('/posts', (req, res) => {
   res.send({ postss: db.listPost() })
 })

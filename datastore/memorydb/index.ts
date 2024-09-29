@@ -1,6 +1,7 @@
 import type { User, Post, Like, Comment } from "../../types";
 import type { DataStore } from "../index";
-export class inMemortDataStore implements DataStore {
+
+export class InMemoryDataStore implements DataStore {
 
     private users: User[] = []
     private posts: Post[] = []
@@ -10,10 +11,10 @@ export class inMemortDataStore implements DataStore {
     createUser(user: User): void {
         this.users.push(user)
     }
-    getUserbyEmail(email: string): User | undefined {
+    getUserByEmail(email: string): User | undefined {
         return this.users.find(u => u.email == email)
     }
-    getUserbyusername(username: string): User | undefined {
+    getUserByUsername(username: string): User | undefined {
         return this.users.find(u => u.username == username)
     }
     listPost(): Post[] {
@@ -40,7 +41,7 @@ export class inMemortDataStore implements DataStore {
     createComment(comment: Comment): void {
         this.comments.push(comment)
     }
-    listComment(postId: string): Comment[] {
+    listComments(postId: string): Comment[] {
         return this.comments.filter(comment => comment.postId === postId);
     }
     deleteComment(id: string): void {
