@@ -1,5 +1,5 @@
 import express, { type RequestHandler } from 'express'
-import { db } from './datastore'
+import { createPostHAndler, listPostsHandler } from './handlers/postHandlers'
 const app = express()
 app.use(express.json())
 
@@ -10,15 +10,8 @@ const requestLoggerMilddleware: RequestHandler = (req, res, next) => {
 
 app.use(requestLoggerMilddleware)
 
-app.get('/posts', (req, res) => {
-  res.send({ posts: db.listPost() })
-})
-
-app.post('/posts', (req, res) => {
-  const newpost = req.body
-  db.createPost(newpost)
-  res.sendStatus(201)
-})
+app.get('/posts', listPostsHandler)
+app.post('/posts', createPostHAndler)
 
 app.listen(4000, () => {
   console.log(`hi there app is on http://localhost:4000`)
