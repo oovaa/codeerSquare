@@ -11,7 +11,7 @@ const requestLoggerMilddleware: RequestHandler = (req, res, next) => {
 app.use(requestLoggerMilddleware)
 
 app.get('/posts', (req, res) => {
-  res.send({ postss: db.listPost() })
+  res.send({ posts: db.listPost() })
 })
 
 app.post('/posts', (req, res) => {
