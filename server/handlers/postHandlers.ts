@@ -1,27 +1,17 @@
-import type { RequestHandler } from "express"
 import { db } from "../datastore"
-import type { Post } from "../types"
+import type { Expresshandler, Post } from "../../types"
 import { randomUUID } from "crypto"
+import type { createPostRequest, createPostResponse, ListPostRequest, ListPostResponse } from "../api"
 
 
-export type Expresshandler<req, res> = RequestHandler<
-    string,
-    Partial<res>,
-    Partial<req>,
-    any
->
 
-
-export const listPostsHandler: Expresshandler<{}, {}> = (req, res) => {
+export const listPostsHandler: Expresshandler<ListPostRequest, ListPostResponse> = (req, res) => {
     res.send({ posts: db.listPost() })
 }
 
-type createPostRequest = Pick<Post, 'title' | 'url' | 'userID'>
 
-interface createPostResponse {
-
-}
 export const createPostHAndler: Expresshandler<createPostRequest, createPostResponse> = (req, res) => {
+    // TODO: validate data
     if (!req.body.title || !req.body.userID || !req.body.url)
         return res.sendStatus(400)
 

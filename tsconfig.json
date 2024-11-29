@@ -8,6 +8,7 @@
     "jsx": "react-jsx",
     "allowJs": true,
 
+    "sourceMap": true,
     // Bundler mode
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
