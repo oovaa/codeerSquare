@@ -5,13 +5,13 @@ import type {
     GetUserRequest,
     GetUserResponse,
 } from "../api";
-import { db } from "../datastore";
+import { db } from "../datastore/dao";
 import type { Expresshandler, User } from "../types";
 
 export const GetUserByUserNameHandler: Expresshandler<
     GetUserRequest,
     GetUserResponse
-> =  async (req, res) => {
+> = async (req, res) => {
     const username = req.query.username;
     const user = await db.getUserByUsername(username);
     if (user) {
