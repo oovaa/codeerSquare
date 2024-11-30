@@ -1,5 +1,5 @@
 import express, { type ErrorRequestHandler, type RequestHandler } from 'express'
-import { createPostHAndler, listPostsHandler } from './server/handlers/postHandlers'
+import { createPostHAndler, listPostsHandler } from './handlers/postHandlers'
 const app = express()
 app.use(express.json())
 

@@ -1,5 +1,5 @@
 import { db } from "../datastore"
-import type { Expresshandler, Post } from "../../types"
+import type { Expresshandler, Post } from "../types"
 import { randomUUID } from "crypto"
 import type { createPostRequest, createPostResponse, ListPostRequest, ListPostResponse } from "../api"
 
