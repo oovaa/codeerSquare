@@ -9,6 +9,9 @@ import {
   GetUserByUserNameHandler,
 } from "./handlers/UserHandles";
 import asyncHandler from "express-async-handler";
+import { initdb } from "./datastore";
+
+(async () => await initdb())();
 
 const app = express();
 app.use(express.json());

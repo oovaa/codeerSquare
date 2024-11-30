@@ -1,5 +1,5 @@
 import type { Comment, Like, Post, User } from "../../types";
-import type { DataStore } from "../dao/index";
+import type { DataStore } from "../index";
 
 export class InMemoryDataStore implements DataStore {
     private users: User[] = [];

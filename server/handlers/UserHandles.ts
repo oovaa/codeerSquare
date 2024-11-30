@@ -5,7 +5,7 @@ import type {
     GetUserRequest,
     GetUserResponse,
 } from "../api";
-import { db } from "../datastore/dao";
+import { db } from "../datastore";
 import type { Expresshandler, User } from "../types";
 
 export const GetUserByUserNameHandler: Expresshandler<

@@ -1,4 +1,4 @@
-import { db } from "../datastore/dao";
+import { db } from "../datastore";
 import type { Expresshandler, Post } from "../types";
 import { randomUUID } from "crypto";
 import type {
