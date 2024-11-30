@@ -1,4 +1,4 @@
-import type { Post } from "./types";
+import type { Post, User } from "./types";
 
 // post api
 export type createPostRequest = Pick<Post, 'title' | 'url' | 'userID'>
@@ -18,8 +18,18 @@ export interface GetPostResponse {
 }
 
 
+// user apis
+export type createUserRequest = Pick<User, | 'firstName' | 'lastName' | 'email' | 'username' | 'password'>
+
+export interface createUserResponse {
+}
+
+export type GetUserRequest = Pick<User, 'email' | 'username'>
+export interface GetUserResponse {
+    user: User
+}
+
+
 // comment apis
 
 // like apis
-
-// user apis
