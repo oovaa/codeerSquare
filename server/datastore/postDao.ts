@@ -1,8 +1,8 @@
 import type { Post } from "../types";
 
 export interface PostDao {
-    listPost(): Post[],
-    createPost(post: Post): void,
-    getPost(id: string): Post | undefined,
-    deletePost(id: string): void
+    listPost(): Promise<Post[]>,
+    createPost(post: Post): Promise<void>,
+    getPost(id: string): Promise<Post | undefined>,
+    deletePost(id: string): Promise<void>
 }
