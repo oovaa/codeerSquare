@@ -3,11 +3,7 @@ import express, {
   type RequestHandler,
 } from "express";
 import { createPostHAndler, listPostsHandler } from "./handlers/postHandlers";
-import {
-  createUserHandler,
-  GetUserByEmailHandler,
-  GetUserByUserNameHandler,
-} from "./handlers/UserHandles";
+import { SignInUserHandler, SignUpUserHandler } from "./handlers/UserHandles";
 import asyncHandler from "express-async-handler";
 import { initdb } from "./datastore";
 
@@ -28,9 +24,8 @@ app.get("/posts", asyncHandler(listPostsHandler));
 app.post("/posts", asyncHandler(createPostHAndler));
 
 //user
-app.get("/user/", asyncHandler(GetUserByUserNameHandler));
-// app.get('/user/', GetUserByEmailHandler)
-app.post("/user", asyncHandler(createUserHandler));
+app.post("/signup", asyncHandler(SignUpUserHandler));
+app.post("/signin", asyncHandler(SignInUserHandler));
 
 const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
   console.error("uncoaught error", err);

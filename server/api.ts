@@ -17,13 +17,20 @@ export interface GetPostResponse {
 }
 
 // user apis
-export type createUserRequest = Pick<
+export type SignupRequest = Pick<
     User,
     "firstName" | "lastName" | "email" | "username" | "password"
 >;
+export interface SiginupResponse {}
 
-export interface createUserResponse {
+export interface SigninRequest {
+    login: string; // uname, email,
+    password: string;
 }
+export type SigninResponse = Pick<
+    User,
+    "firstName" | "lastName" | "email" | "username" | "id"
+>;
 
 export type GetUserRequest = Pick<User, "email" | "username">;
 export interface GetUserResponse {
