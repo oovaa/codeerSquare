@@ -12,7 +12,7 @@ export interface Post {
     id: string;
     title: string;
     url: string;
-    userID: string;
+    userId: string;
     postedAt: number;
 }
 export interface Like {
@@ -32,5 +32,4 @@ export type Expresshandler<req, res> = RequestHandler<
     Partial<res>,
     Partial<req>,
     any
->
-
+>;

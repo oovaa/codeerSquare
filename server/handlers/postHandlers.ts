@@ -18,9 +18,9 @@ export const listPostsHandler: Expresshandler<
 export const createPostHAndler: Expresshandler<
     createPostRequest,
     createPostResponse
-> = (req, res) => {
+> = async (req, res) => {
     // TODO: validate data
-    if (!req.body.title || !req.body.userID || !req.body.url) {
+    if (!req.body.title || !req.body.userId || !req.body.url) {
         return res.sendStatus(400);
     }
 
@@ -29,9 +29,14 @@ export const createPostHAndler: Expresshandler<
         postedAt: Date.now(),
         title: req.body.title,
         url: req.body.url,
-        userID: req.body.userID,
+        userId: req.body.userId,
     };
 
-    db.createPost(post);
-    res.sendStatus(201);
+    try {
+        await db.createPost(post);
+        res.sendStatus(201);
+    } catch (e) {
+        console.error("Error creating post:", e);
+        res.sendStatus(400);
+    }
 };

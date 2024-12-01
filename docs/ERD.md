@@ -38,20 +38,20 @@ We'll need at least the following entities to implement the service:
 | ID | STRING/UUID |
 | Title | STRING |
 | URL | STRING |
-| UserId | STRING/UUID |
+| userId | STRING/UUID |
 | PostedAt | Timestamp |
 
 **Likes**:
 | Column | Type |
 |--------|------|
-| UserId | STRING/UUID |
+| userId | STRING/UUID |
 | PostId | STRING |
 
 **Comments**:
 | Column | Type |
 |---------|------|
 | ID | STRING |
-| UserId | STRING/UUID |
+| userId | STRING/UUID |
 | PostId | STRING |
 | Comment | STRING |
 | PostedAt | Timestamp |
