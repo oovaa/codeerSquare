@@ -3,19 +3,18 @@ import express, {
   type RequestHandler,
 } from "express";
 import { createPostHAndler, listPostsHandler } from "./handlers/postHandlers";
-import { SignInUserHandler, SignUpUserHandler } from "./handlers/UserHandles";
+import { SignInUserHandler, SignUpUserHandler } from "./handlers/AuthHandles";
 import asyncHandler from "express-async-handler";
 import { initdb } from "./datastore";
+import { requestLoggerMilddleware } from "./middleware/loggerMiddleware";
+import { errorHandler } from "./middleware/errormiddleware";
 
 (async () => await initdb())();
 
 const app = express();
 app.use(express.json());
 
-const requestLoggerMilddleware: RequestHandler = (req, res, next) => {
-  console.log(req.method, req.path, "- body", req.body);
-  next();
-};
+
 
 app.use(requestLoggerMilddleware);
 
@@ -27,11 +26,6 @@ app.post("/posts", asyncHandler(createPostHAndler));
 app.post("/signup", asyncHandler(SignUpUserHandler));
 app.post("/signin", asyncHandler(SignInUserHandler));
 
-const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
-  console.error("uncoaught error", err);
-  res.status(500);
-  return res.status(500).send("Oops we have a problem in our servers");
-};
 
 app.use(errorHandler);
 
