@@ -1,5 +1,5 @@
-import type { Like } from "../../types";
+import type { Like } from '../../types'
 
 export interface LikeDao {
-    createLike(like: Like): Promise<void>;
+  createLike(like: Like): Promise<void>
 }

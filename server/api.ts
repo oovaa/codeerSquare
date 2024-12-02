@@ -1,40 +1,38 @@
-import type { Post, User } from "./types";
+import type { Post, User } from './types'
 
 // post api
-export type createPostRequest = Pick<Post, "title" | "url" | "userId">;
+export type createPostRequest = Pick<Post, 'title' | 'url' | 'userId'>
 
-export interface createPostResponse {
-}
+export interface createPostResponse {}
 
 export interface ListPostRequest {}
 export interface ListPostResponse {
-    posts: Post[];
+  posts: Post[]
 }
 
 export interface GetPostRequest {}
 export interface GetPostResponse {
-    post: Post;
+  post: Post
 }
 
 // user apis
-export type SignupRequest = Pick<
-    User,
-    "firstName" | "lastName" | "email" | "username" | "password"
->;
-export interface SiginupResponse {}
+export type SignupRequest = Pick<User, 'firstName' | 'lastName' | 'email' | 'username' | 'password'>
+export interface SiginupResponse {
+  jwt: string
+}
 
 export interface SigninRequest {
-    login: string; // uname, email,
-    password: string;
+  login: string // uname, email,
+  password: string
 }
-export type SigninResponse = Pick<
-    User,
-    "firstName" | "lastName" | "email" | "username" | "id"
->;
+export type SigninResponse = {
+  user: Pick<User, 'firstName' | 'lastName' | 'email' | 'username' | 'id'>
+  jwt: string
+}
 
-export type GetUserRequest = Pick<User, "email" | "username">;
+export type GetUserRequest = Pick<User, 'email' | 'username'>
 export interface GetUserResponse {
-    user: User;
+  user: User
 }
 
 // comment apis
