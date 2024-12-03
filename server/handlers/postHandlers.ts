@@ -9,7 +9,7 @@ export const listPostsHandler: Expresshandler<ListPostRequest, ListPostResponse>
 
 export const createPostHAndler: Expresshandler<createPostRequest, createPostResponse> = async (req, res) => {
   // TODO: validate data
-  if (!req.body.title || !req.body.userId || !req.body.url) {
+  if (!req.body.title || !req.body.url) {
     return res.sendStatus(400)
   }
 
@@ -18,7 +18,7 @@ export const createPostHAndler: Expresshandler<createPostRequest, createPostResp
     postedAt: Date.now(),
     title: req.body.title,
     url: req.body.url,
-    userId: req.body.userId
+    userId: res.locals.userId 
   }
 
   try {

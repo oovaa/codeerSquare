@@ -13,6 +13,9 @@ export const authMiddleware: Expresshandler<any, any> = async (req, res, next) =
     if (!user) {
       throw 'user not found'
     }
+
+    res.locals.userId = payload.userId
+
     next()
   } catch (error) {
     res.status(401).send({ error: 'bad token' })
