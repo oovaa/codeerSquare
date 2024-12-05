@@ -17,6 +17,7 @@ app.use(express.json())
 app.use(requestLoggerMilddleware)
 
 //user
+app.get('/z', (req,res) => res.send({status: "OK"}))
 app.post('/signup', asyncHandler(SignUpUserHandler))
 app.post('/signin', asyncHandler(SignInUserHandler))
 
