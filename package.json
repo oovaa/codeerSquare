@@ -3,7 +3,8 @@
   "module": "index.ts",
   "type": "module",
   "scripts": {
-    "start": "nodemon --exec bun ./server/server.ts"
+    "start": "nodemon --exec bun ./server/server.ts",
+    "start:prod": "bun pm2 delete codersquare; bun pm2 start --name codersquare \"bun ./server/server.ts\""
   },
   "devDependencies": {
     "@types/bun": "latest",
@@ -20,6 +21,7 @@
     "express": "^4.21.1",
     "express-async-handler": "^1.2.0",
     "jsonwebtoken": "^9.0.2",
+    "pm2": "^5.4.3",
     "sqlite": "^5.1.1",
     "sqlite3": "^5.1.7"
   }
