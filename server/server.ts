@@ -9,7 +9,7 @@ import dotenv from 'dotenv'
 import { authMiddleware } from './middleware/authMiddleware'
 
 dotenv.config()
-const PORT = process.env.PORT || 5000
+const port = process.env.PORT || 4000
 
 ;(async () => await initdb())()
 
@@ -30,6 +30,6 @@ app.post('/posts', asyncHandler(createPostHAndler))
 
 app.use(errorHandler)
 
-app.listen(PORT, () => {
-  console.log(`hi there app is on http://localhost:${PORT}`)
+app.listen(port, () => {
+  console.log(`hi there app is on http://0.0.0.0:${port}`)
 })
