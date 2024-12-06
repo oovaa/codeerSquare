@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "start": "nodemon ./server/server.ts",
-    "start:prod": "pm2 delete codersquare; pm2 start --name codersquare \"bun ./server/server.ts\""
+    "start:prod": "bun ./server/server.ts"
   },
   "devDependencies": {
     "@types/bun": "latest",

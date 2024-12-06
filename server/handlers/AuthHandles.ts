@@ -15,9 +15,9 @@ export const SignInUserHandler: Expresshandler<SigninRequest, SigninResponse> = 
     const existing = (await db.getUserByEmail(login)) || (await db.getUserByUsername(login))
     console.log('Existing user found:', existing)
 
-    if (!existing || existing.password !== hash(password)) {
+    if (!existing || existing.password !== hash(password)) {     
       console.log('Invalid credentials')
-      return res.sendStatus(403) // Forbidden
+      return res.status(403).send({error:"Invalid credentials"}) // Forbidden
     }
 
     const jwt = signJWT({ userId: existing.id })
@@ -35,7 +35,6 @@ export const SignInUserHandler: Expresshandler<SigninRequest, SigninResponse> = 
     })
   } catch (error) {
     console.error('Error during sign-in:', error)
-    next(error)
   }
 }
 
@@ -45,6 +44,7 @@ export const SignUpUserHandler: Expresshandler<SignupRequest, SiginupResponse> =
   if (!lastName || !firstName || !email || !password || !username) {
     return res.status(400).send({ error: 'all feilds are required' })
   }
+
 
   const existing = (await db.getUserByEmail(email)) || (await db.getUserByUsername(username))
 
@@ -67,5 +67,8 @@ export const SignUpUserHandler: Expresshandler<SignupRequest, SiginupResponse> =
 }
 
 function hash(password: string): string {
-  return pbkdf2Sync(password, process.env.pass_solt!, 42, 64, 'sha512').toString()
+  if (!process.env.PASS_SALT) {
+    throw new Error('PASS_SALT is not defined')
+  }
+  return pbkdf2Sync(password, process.env.PASS_SALT, 42, 64, 'sha512').toString('hex')
 }
