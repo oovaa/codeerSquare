@@ -3,6 +3,12 @@ import { Database, open } from 'sqlite'
 import type { DataStore } from '..'
 import type { Comment, Like, Post, User } from '../../types'
 import path from 'path'
+import { fileURLToPath } from 'url'
+
+// Get the directory name
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 
 export class SqliteDataStore implements DataStore {
   private db!: Database<sqlite3.Database, sqlite3.Statement>
