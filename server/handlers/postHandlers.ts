@@ -1,7 +1,7 @@
 import { db } from '../datastore'
-import type { Expresshandler, Post } from '../types'
+import type { Expresshandler, Post } from '../../shared'
 import { randomUUID } from 'crypto'
-import type { createPostRequest, createPostResponse, ListPostRequest, ListPostResponse } from '../api'
+import type { createPostRequest, createPostResponse, ListPostRequest, ListPostResponse } from '../../shared'
 
 export const listPostsHandler: Expresshandler<ListPostRequest, ListPostResponse> = async (req, res) => {
   res.send({ posts: await db.listPost() })

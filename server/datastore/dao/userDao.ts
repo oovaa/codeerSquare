@@ -1,4 +1,4 @@
-import type { User } from '../../types'
+import type { User } from '../../../shared'
 
 export interface userDao {
   createUser(user: User): Promise<void>

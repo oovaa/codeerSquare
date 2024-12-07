@@ -1,7 +1,7 @@
 import sqlite3 from 'sqlite3'
 import { Database, open } from 'sqlite'
 import type { DataStore } from '..'
-import type { Comment, Like, Post, User } from '../../types'
+import type { Comment, Like, Post, User } from '../../../shared'
 import path from 'path'
 import { fileURLToPath } from 'url'
 

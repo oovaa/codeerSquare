@@ -1,4 +1,4 @@
-import type { Comment, Like, Post, User } from '../../types'
+import type { Comment, Like, Post, User } from '../../../shared'
 import type { DataStore } from '../index'
 
 export class InMemoryDataStore implements DataStore {

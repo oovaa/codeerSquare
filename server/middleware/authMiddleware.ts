@@ -1,6 +1,6 @@
 import { verifyJWT } from '../auth'
 import { db } from '../datastore'
-import type { Expresshandler } from '../types'
+import type { Expresshandler } from '../../shared'
 
 export const authMiddleware: Expresshandler<any, any> = async (req, res, next) => {
   const token = req.headers.authorization?.split(' ')[1]

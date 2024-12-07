@@ -18,18 +18,19 @@ app.use(express.json())
 
 app.use(requestLoggerMilddleware)
 
-//user
-app.get('/z', (req,res) => res.status(200).send({status: "OK all good"}))
+// Public routes
+app.get('/z', (req, res) => res.status(200).send({ status: "OK all good" }))
 app.post('/signup', asyncHandler(SignUpUserHandler))
 app.post('/signin', asyncHandler(SignInUserHandler))
 
+// Authenticated routes
 app.use(authMiddleware)
-//posts
 app.get('/posts', asyncHandler(listPostsHandler))
 app.post('/posts', asyncHandler(createPostHAndler))
 
+// Error handling middleware
 app.use(errorHandler)
 
 app.listen(port, () => {
-  console.log(`hi there app is on http://0.0.0.0:${port}`)
+  console.log(`Server is running on http://0.0.0.0:${port}`)
 })

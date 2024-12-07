@@ -1,7 +1,7 @@
 import { pbkdf2Sync, randomUUID } from 'crypto'
-import type { SiginupResponse, SigninRequest, SigninResponse, SignupRequest } from '../api'
+import type { SiginupResponse, SigninRequest, SigninResponse, SignupRequest } from '../../shared'
 import { db } from '../datastore'
-import type { Expresshandler, User } from '../types'
+import type { Expresshandler, User } from '../../shared'
 import { signJWT } from '../auth'
 
 export const SignInUserHandler: Expresshandler<SigninRequest, SigninResponse> = async (req, res, next) => {
