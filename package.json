@@ -10,7 +10,7 @@
     "lint:check": "prettier . --check",
     "start:server": "cd server && bun start",
     "start:web": "cd web && bun start",
-    "start": "bun --parallel start:server " 
+    "start": "bun --parallel start:server "
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^3.3.0",
