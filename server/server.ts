@@ -20,13 +20,13 @@ app.use(requestLoggerMilddleware)
 
 // Public routes
 app.get('/z', (req, res) => res.status(200).send({ status: "OK all good" }))
-app.post('/signup', asyncHandler(SignUpUserHandler))
-app.post('/signin', asyncHandler(SignInUserHandler))
+app.post('/api/v1/signup', asyncHandler(SignUpUserHandler))
+app.post('/api/v1/signin', asyncHandler(SignInUserHandler))
 
 // Authenticated routes
 app.use(authMiddleware)
-app.get('/posts', asyncHandler(listPostsHandler))
-app.post('/posts', asyncHandler(createPostHAndler))
+app.get('/api/v1/posts', asyncHandler(listPostsHandler))
+app.post('/api/v1/posts', asyncHandler(createPostHAndler))
 
 // Error handling middleware
 app.use(errorHandler)

@@ -1,29 +1,20 @@
 {
   "name": "codersquare",
-  "module": "index.ts",
-  "type": "module",
+  "description": "A social web app for sharing learning resources in a hackernews-style experience.",
   "scripts": {
-    "start": "nodemon ./server/server.ts",
-    "start:prod": "bun ./server/server.ts"
+    "build:server": "cd server && bun i && bun run build",
+    "build:shared": "cd shared && bun i && bun run build",
+    "build:web": "cd web && bun i && bun run build",
+    "build": "bun i && bun-run-all --parallel build:shared build:server build:web",
+    "lint": "prettier . --write",
+    "lint:check": "prettier . --check",
+    "start:server": "cd server && bun start",
+    "start:web": "cd web && bun start",
+    "start": "bun --parallel start:server " 
   },
   "devDependencies": {
-    "@types/bun": "latest",
-    "@types/express": "^4.17.21",
-    "@types/jsonwebtoken": "^9.0.7",
-    "nodemon": "^3.1.7"
-  },
-  "peerDependencies": {
-    "typescript": "^5.5.4"
-  },
-  "dependencies": {
-    "@types/node": "^22.10.1",
-    "create-react-app": "^5.0.1",
-    "dotenv": "^16.4.5",
-    "express": "^4.21.1",
-    "express-async-handler": "^1.2.0",
-    "jsonwebtoken": "^9.0.2",
-    "pm2": "^5.4.3",
-    "sqlite": "^5.1.1",
-    "sqlite3": "^5.1.7"
+    "@trivago/prettier-plugin-sort-imports": "^3.3.0",
+    "bun-run-all": "^4.1.5",
+    "prettier": "^2.7.1"
   }
 }
