@@ -18,8 +18,13 @@ app.use(express.json())
 
 app.use(requestLoggerMilddleware)
 
+;
+
 // Public routes
-app.get('/z', (req, res) => res.status(200).send({ status: "OK all good" }))
+app.get('/z', (req, res) => {
+  console.log(process.env.PASS_SALT);
+  
+  res.status(200).send({ status: "OK all good" })})
 app.post('/api/v1/signup', asyncHandler(SignUpUserHandler))
 app.post('/api/v1/signin', asyncHandler(SignInUserHandler))
 
