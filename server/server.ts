@@ -22,9 +22,8 @@ app.use(requestLoggerMilddleware)
 
 // Public routes
 app.get('/z', (req, res) => {
-  console.log(process.env.PASS_SALT);
   
-  res.status(200).send({ status: "OK all good" })})
+  res.status(200).send({ status: "OK all good" ,env: process.env.PASS_SALT})})
 app.post('/api/v1/signup', asyncHandler(SignUpUserHandler))
 app.post('/api/v1/signin', asyncHandler(SignInUserHandler))
 
