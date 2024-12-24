@@ -1,24 +1,15 @@
-import { useEffect, useState } from 'react'
+import ListPosts from './pages/ListPosts'
+import ViewPost from './pages/VeiwPost'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 function App() {
-  const [posts, setPosts] = useState([])
-
-  const fetchData = async () => {
-    const res = await fetch('http://localhost:3000/api/v1/posts/')
-    const data = await res.json()
-    setPosts(data.posts)
-  }
-
-  useEffect(() => {
-    console.log('use effect ran')
-    fetchData()
-    console.log(posts)
-  }, [])
-
   return (
-    <div>
-      <div>{posts.length}</div>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<ListPosts />} />
+        <Route path="/p/:id" element={<ViewPost />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
