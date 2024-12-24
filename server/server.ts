@@ -7,6 +7,7 @@ import { requestLoggerMilddleware } from './middleware/loggerMiddleware'
 import dotenv from 'dotenv'
 import express from 'express'
 import asyncHandler from 'express-async-handler'
+import cors from "cors"
 
 dotenv.config()
 const port = process.env.PORT || 4000
@@ -14,6 +15,7 @@ const port = process.env.PORT || 4000
 ;(async () => await initdb())()
 
 const app = express()
+app.use(cors());
 app.use(express.json())
 
 app.use(requestLoggerMilddleware)
